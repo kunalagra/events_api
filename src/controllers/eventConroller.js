@@ -26,8 +26,8 @@ exports.getEventss = async (req, res) => {
         // Create and Fetch All Promises together
         const promises = [];
         events.forEach(event => {
-            promises.push(axios.get(`https://gg-backend-assignment.azurewebsites.net/api/Weather?code===&city=${event.city}&date=${event.date.toISOString().split('T')[0]}`));
-            promises.push(axios.get(`https://gg-backend-assignment.azurewebsites.net/api/Distance?code===&latitude1=${latitude}&longitude1=${longitude}&latitude2=${event.location.coordinates[1]}&longitude2=${event.location.coordinates[0]}`));
+            promises.push(axios.get(`https://gg-backend-assignment.azurewebsites.net/api/Weather?code=${process.env.WEATHER_KEY}==&city=${event.city}&date=${event.date.toISOString().split('T')[0]}`));
+            promises.push(axios.get(`https://gg-backend-assignment.azurewebsites.net/api/Distance?code=${process.env.DISTANCE_KEY}==&latitude1=${latitude}&longitude1=${longitude}&latitude2=${event.location.coordinates[1]}&longitude2=${event.location.coordinates[0]}`));
         });
         let wdRes;
         try {
