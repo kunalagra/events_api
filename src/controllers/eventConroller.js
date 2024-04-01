@@ -71,7 +71,7 @@ exports.getEventss = async (req, res) => {
         res.json(data);
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: "Internal Server Error" });
     }
 };
 
@@ -93,7 +93,7 @@ exports.createEvents = async (req, res) => {
         
         const events = eventsData.map(event => {
             if (!event.event_name || !event.city_name || !event.date || !event.latitude || !event.longitude) {
-                throw new Error('Incomplete event data');
+                res.status(400).json({ message: 'Incomplete event data' });
             }
             return new Event({
                 name: event.event_name,
@@ -112,6 +112,6 @@ exports.createEvents = async (req, res) => {
         
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ error: error });
+        res.status(500).json({ error: "Internal Server Error" });
     }
 };
