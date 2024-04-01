@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const eventController = require('../controllers/eventConroller');
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
-// Define your routes
 router.get('/find', eventController.getEventss);
-router.post('/create', eventController.createEvents);
+router.post('/create',upload.single('file'), eventController.createEvents);
 
 module.exports = router;

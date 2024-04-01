@@ -1,10 +1,8 @@
-// models/Event.js
+const mongoose = require('mongoose');
 
-import {model, models, Schema} from "mongoose";
-
-const eventSchema = new Schema({
-    event_name: String,
-    city_name: String,
+const eventSchema = new mongoose.Schema({
+    name: String,
+    city: String,
     date: Date,
     time: String,
     location: {
@@ -22,4 +20,4 @@ const eventSchema = new Schema({
 eventSchema.index({ date: 1 });
 eventSchema.index({ location: '2dsphere' });
 
-export const Event = models?.Event || model('Event', eventSchema);
+module.exports = mongoose.models?.Event || mongoose.model('Event', eventSchema);
