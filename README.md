@@ -6,7 +6,13 @@
 - Server: NodeJS - Currently learning
 - Database: MongoDB - Inbuilt support for B-Tree Indexes (used for dates), and Support for GeoData (GeoJSON) with Indexing support too. 
 
+## Approach
 
+- The task was simple. From data already given, I first crafted the Event's Schema and took a look at proper way for storing GeoJSON Data.
+- Sorting the data was curcial step. Initially, I skipped the location sorting from DB which often led to mismatch in entries comapred to page 2 entries.
+-  The test_cases were wrong in sense there was no sorting of events by distance when date are same, so depedning on how data is inserted, we can get different data on pages than expected. Thus, additional location based filtering was added. Because of this, the data returned is not in the same order as in test_cases.
+-  Also commit history was rewritten to account for API Key expose of azure leading to github rejecting push.
+  
 ## How To Use
 
 To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
