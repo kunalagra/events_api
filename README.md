@@ -8,10 +8,11 @@
 
 ## Approach
 
-- The task was simple. From data already given, I first crafted the Event's Schema and took a look at proper way for storing GeoJSON Data.
-- Sorting the data was curcial step. Initially, I skipped the location sorting from DB which often led to mismatch in entries comapred to page 2 entries.
--  The test_cases were wrong in sense there was no sorting of events by distance when date are same, so depedning on how data is inserted, we can get different data on pages than expected. Thus, additional location based filtering was added. Because of this, the data returned is not in the same order as in test_cases.
--  Also commit history was rewritten to account for API Key expose of azure leading to github rejecting push.
+1. The task appeared straightforward at first. Utilizing the provided data, I began by constructing the Event's Schema and delved into the proper method for storing GeoJSON Data. Sorting the data proved to be a crucial step. 
+2. It became evident that the test cases were flawed; they failed to consider sorting events by distance when dates were identical. Depending on the order of data insertion, the resulting data on the pages could vary from the expected outcome. 
+3. This was evident for tast_cases on page 2. Because, I was not sorting by locations initially, it resulted in inconsistencies compared to entries on page 2. To address this issue, I added an additional location-based sorting.
+4. Consequently, the data returned no longer maintains the same order as the test cases but the returned page has all the entires as of that in test_case .
+5. Furthermore, the commit history had to be revised due to the inadvertent exposure of the API Key from Azure, resulting in GitHub rejecting the push.
   
 ## How To Use
 
