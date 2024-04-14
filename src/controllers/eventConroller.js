@@ -68,7 +68,7 @@ exports.getEventss = async (req, res) => {
             totalEvents: totalEvents,
             totalPages: Math.ceil(totalEvents / pageSize)
         }
-        res.json(data);
+        res.status(200).json(data);
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ error: "Internal Server Error" });
